@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadow Duplicata</title>
+    <style>
+        .scene {
+            perspective: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f0f0f0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-wrapper {
+            position: relative;
+            transform-style: preserve-3d;
+            transform-origin: 100px 120x;
+            animation: spin 3s linear infinite;
+        }
+
+        .card-wrapper-shadow {
+            position: absolute;
+            top: 15vh;
+            left: 30vw; 
+            transform-style: preserve-3d;
+            transform-origin: 100px 120px;
+            animation: spin 3s linear infinite;
+            z-index: -1; 
+            opacity: 0.5; 
+        }
+
+     
+        .card, .card-shadow {
+            width: 200px;
+            height: 300px;
+            background-color: #3498db;
+            transform: rotate(30deg);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .card-shadow {
+            background-color: rgba(0, 0, 0, 0.5); 
+            filter: blur(5px); 
+            transform: rotate(30deg) skew(-2deg, 2deg);
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotateY(0deg);
+            }
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="card-wrapper-shadow">
+            <div class="card-shadow"></div>
+        </div>
+
+        <div class="card-wrapper">
+            <div class="card"></div>
+        </div>
+    </div>
+</body>
+</html>
